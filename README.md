@@ -1,36 +1,63 @@
+# AI Hiring Agent
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Project Structure
+
+```
+├── .env.local
+├── app/
+│   ├── page.tsx
+│   └── api/
+│       ├── submit/
+│       │   └── route.ts
+│       └── evaluate/
+│           └── route.ts
+├── lib/
+│   ├── gemini.ts
+│   ├── parser.ts
+│   └── pinecone.ts
+└── scripts/
+    └── init.ts
+```
 ## Getting Started
 
-First, run the development server:
-
+1. Install dependencies
+```bash
+npm install
+```
+2. Start the development server
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+3. Open [http://localhost:3000](http://localhost:3000) with your browser.
+
+## Environment Variables
+
+To run this project, you need to create a `.env.local` file and add the following environment variables:
+
+```bash
+GEMINI_API_KEY=your_google_api_key
+PINECONE_API_KEY=your_pinecone_key
+PINECONE_INDEX_NAME=candidates
+NEXT_PUBLIC_PINECONE_ENVIRONMENT=gcp-starter
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Candidate application form for submitting details and resumes.
+- Basic resume parsing to extract skills, experience, and education.
+- RAG-based candidate search and evaluation.
+- AI-powered candidate ranking and feedback generation.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+- **Candidate Application**: Candidates can submit their details and upload resumes through the application form.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Resume Parsing**: The application extracts relevant information from the resumes using pdf-parse.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Candidate Evaluation**: Candidate profiles are stored in Pinecone and evaluated using Google Gemini AI. The application generates scores and feedback based on job description relevance.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Search and Ranking**: Use the search function to retrieve the most relevant candidates for a job description.
