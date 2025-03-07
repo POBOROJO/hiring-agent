@@ -2,6 +2,10 @@
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+This system is a Next.js-based application designed to streamline candidate recruitment by automating resume parsing, semantic matching, and AI-driven evaluations. It combines resume extraction , vector-based search (RAG) , and Google Gemini API for intelligent candidate ranking and feedback.
+
+
+
 ## Project Structure
 
 ```
